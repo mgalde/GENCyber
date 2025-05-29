@@ -1,5 +1,5 @@
 # GenCyber_1a.py
-# Day 1: Hashing Passwords Demo for Middle School Students
+# Day 1: Hashing Passwords
 
 import hashlib
 import os
