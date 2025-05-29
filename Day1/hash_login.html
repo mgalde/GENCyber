@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GenCyber Login Challenge</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #00FFAA;
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 1.2rem;
+            font-family: monospace;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 GenCyber Login Challenge</h1>
+    <p>Username: <strong>mgalde</strong></p>
+    <p>Salted MD5 Hash: <strong id="hash-display">Loading...</strong></p>
+
+    <input type="text" id="passwordInput" placeholder="Enter cracked password">
+    <button onclick="checkPassword()">Login</button>
+
+    <div id="result"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        let selectedPassword = "";
+        const salt = "mgalde";
+
+        async function loadWordlist() {
+            try {
+                const response = await fetch("wordlist.txt");
+                if (!response.ok) throw new Error("wordlist.txt could not be loaded.");
+
+                const text = await response.text();
+                const passwords = text.split('\n').map(p => p.trim()).filter(p => p.length > 0);
+
+                selectedPassword = passwords[Math.floor(Math.random() * passwords.length)];
+                const full = salt + selectedPassword;
+                const hash = CryptoJS.MD5(full).toString();
+
+                document.getElementById("hash-display").textContent = hash;
+            } catch (err) {
+                document.getElementById("hash-display").textContent = "⚠️ Error loading wordlist.";
+                console.error(err);
+            }
+        }
+
+        function checkPassword() {
+            const userInput = document.getElementById("passwordInput").value.trim();
+            if (userInput === selectedPassword) {
+                window.location.href = "congrats.html";
+            } else {
+                document.getElementById("result").textContent = "❌ Incorrect password. Try again!";
+            }
+        }
+
+        loadWordlist();
+    </script>
+</body>
+</html>

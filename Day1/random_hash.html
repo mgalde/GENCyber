@@ -16,12 +16,6 @@
             font-weight: bold;
             text-align: center;
             padding: 20px;
-            cursor: pointer;
-        }
-
-        #hash-display {
-            max-width: 90%;
-            transition: 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -32,10 +26,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 
     <script>
-        let revealed = false;
-        let selectedPassword = "";
-        let selectedHash = "";
-
         async function loadWordlist() {
             try {
                 const response = await fetch('wordlist.txt');
@@ -44,26 +34,16 @@
                 const text = await response.text();
                 const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
 
-                selectedPassword = lines[Math.floor(Math.random() * lines.length)];
-                selectedHash = md5(selectedPassword);
+                const randomWord = lines[Math.floor(Math.random() * lines.length)];
+                const hash = md5(randomWord);
 
-                document.getElementById('hash-display').textContent = selectedHash;
+                document.getElementById('hash-display').textContent = hash;
 
             } catch (err) {
                 document.getElementById('hash-display').textContent = "⚠️ Error loading wordlist.txt";
                 console.error(err);
             }
         }
-
-        document.getElementById('hash-display').addEventListener('click', () => {
-            if (revealed) {
-                document.getElementById('hash-display').textContent = selectedHash;
-                revealed = false;
-            } else {
-                document.getElementById('hash-display').textContent = `🔓 ${selectedPassword}`;
-                revealed = true;
-            }
-        });
 
         loadWordlist();
     </script>
