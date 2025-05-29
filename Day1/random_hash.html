@@ -16,17 +16,36 @@
             font-weight: bold;
             text-align: center;
             padding: 20px;
-            cursor: pointer;
+            position: relative;
         }
 
         #hash-display {
             max-width: 90%;
-            transition: 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        #pi-link {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #222; /* nearly invisible on dark background */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        #pi-link:hover {
+            color: #0f0; /* becomes visible when hovered */
         }
     </style>
 </head>
 <body>
     <div id="hash-display">Loading hash...</div>
+
+    <!-- Hidden pi symbol that links to hash_login.html -->
+    <div id="pi-link" title="π">
+        <a href="hash_login.html" style="text-decoration: none; color: inherit;">π</a>
+    </div>
 
     <!-- Load MD5 hashing library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
