@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GenCyber Hash Hunt</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+            color: #0f0;
+            font-family: monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="hash-display">Loading hash...</div>
+
+    <!-- Load MD5 hashing library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+    <script>
+        async function loadWordlist() {
+            try {
+                const response = await fetch('wordlist.txt');
+                if (!response.ok) throw new Error("Failed to load wordlist.txt");
+
+                const text = await response.text();
+                const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+
+                const randomWord = lines[Math.floor(Math.random() * lines.length)];
+                const hash = md5(randomWord);
+
+                document.getElementById('hash-display').textContent = hash;
+
+            } catch (err) {
+                document.getElementById('hash-display').textContent = "⚠️ Error loading wordlist.txt";
+                console.error(err);
+            }
+        }
+
+        loadWordlist();
+    </script>
+</body>
+</html>
