@@ -87,8 +87,11 @@
     <div id="questionBox">
       <div id="timer">Time Left: <span id="timeLeft">120</span> seconds</div>
       <h2 id="questionText"></h2>
-      <div id="answers"></div>
-      <button class="answer-btn" onclick="closeQuestion()">No Answer</button>
+      <div id="answers">
+        <button class="answer-btn" onclick="handleAnswer('Team1')">✅ Team 1</button>
+        <button class="answer-btn" onclick="handleAnswer('Team2')">✅ Team 2</button>
+        <button class="answer-btn" onclick="closeQuestion()">❌ No Answer</button>
+      </div>
     </div>
   </div>
 
@@ -103,6 +106,8 @@
     let questions = {};
     let teamScores = { Team1: 0, Team2: 0 };
     let countdown;
+    let currentCell = null;
+    let currentValue = 0;
 
     fetch('questions.json')
       .then(res => res.json())
@@ -132,35 +137,17 @@
       if (!question) return;
 
       document.getElementById("questionText").innerText = question.question;
-      const answersDiv = document.getElementById("answers");
-      answersDiv.innerHTML = "";
-
-      question.choices.forEach((choice) => {
-        const btn1 = document.createElement("button");
-        btn1.className = "answer-btn";
-        btn1.innerText = `Team 1: ${choice}`;
-        btn1.onclick = () => handleAnswer("Team1", choice, question.answer, question.value, cell);
-
-        const btn2 = document.createElement("button");
-        btn2.className = "answer-btn";
-        btn2.innerText = `Team 2: ${choice}`;
-        btn2.onclick = () => handleAnswer("Team2", choice, question.answer, question.value, cell);
-
-        answersDiv.appendChild(btn1);
-        answersDiv.appendChild(btn2);
-        answersDiv.appendChild(document.createElement("br"));
-      });
+      currentCell = cell;
+      currentValue = value;
 
       startTimer();
       document.getElementById("questionModal").style.display = "block";
     }
 
-    function handleAnswer(team, selected, correct, value, cell) {
-      if (selected === correct) {
-        teamScores[team] += value;
-      }
+    function handleAnswer(team) {
+      teamScores[team] += currentValue;
       updateScores();
-      cell.classList.add('hidden');
+      currentCell.classList.add('hidden');
       closeQuestion();
     }
 
