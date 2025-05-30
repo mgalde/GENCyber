@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GenCyber Jeopardy!</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: monospace;
+      text-align: center;
+    }
+    h1 {
+      color: #00ffff;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 2px solid #00ffff;
+      padding: 20px;
+      min-width: 120px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    th {
+      background-color: #004d4d;
+    }
+    td {
+      background-color: #003333;
+    }
+    .hidden {
+      visibility: hidden;
+    }
+    #questionModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding-top: 100px;
+    }
+    #questionBox {
+      margin: auto;
+      padding: 20px;
+      background-color: #222;
+      border: 2px solid #00ffff;
+      width: 60%;
+    }
+  </style>
+</head>
+<body>
+  <h1>🕵️ GenCyber Jeopardy 🧠</h1>
+  <table id="jeopardyBoard"></table>
+
+  <div id="questionModal">
+    <div id="questionBox">
+      <h2 id="questionText"></h2>
+      <div id="answers"></div>
+      <button onclick="closeQuestion()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    const categories = [
+      "Hack the Passwords!", 
+      "Gone Phishin'", 
+      "Crypto Chaos", 
+      "Net Ninjas"
+    ];
+    const values = [10, 20, 40, 60, 100];
+    let questions = {};
+    let teamScores = { Team1: 0, Team2: 0 };
+
+    fetch('questions.json')
+      .then(res => res.json())
+      .then(data => {
+        questions = data;
+        buildBoard();
+      });
+
+    function buildBoard() {
+      const board = document.getElementById("jeopardyBoard");
+      let headerRow = "<tr>" + categories.map(cat => `<th>${cat}</th>`).join('') + "</tr>";
+      board.innerHTML += headerRow;
+
+      for (let i = 0; i < values.length; i++) {
+        let row = "<tr>";
+        for (let j = 0; j < categories.length; j++) {
+          row += `<td onclick="showQuestion('${categories[j]}', ${values[i]}, this)">${values[i]}</td>`;
+        }
+        row += "</tr>";
+        board.innerHTML += row;
+      }
+    }
+
+    function showQuestion(category, value, cell) {
+      const qList = questions[category];
+      const question = qList.find(q => q.value === value);
+      if (!question) return;
+
+      document.getElementById("questionText").innerText = question.question;
+
+      const answersDiv = document.getElementById("answers");
+      answersDiv.innerHTML = "";
+      question.choices.forEach((choice, idx) => {
+        const btn = document.createElement("button");
+        btn.innerText = choice;
+        btn.onclick = () => {
+          if (choice === question.answer) {
+            const team = prompt("Correct! Enter team (Team1 or Team2):");
+            teamScores[team] += question.value;
+            alert(team + " score: " + teamScores[team]);
+          } else {
+            alert("Wrong answer!");
+          }
+          cell.classList.add('hidden');
+          closeQuestion();
+        };
+        answersDiv.appendChild(btn);
+        answersDiv.appendChild(document.createElement("br"));
+      });
+
+      document.getElementById("questionModal").style.display = "block";
+    }
+
+    function closeQuestion() {
+      document.getElementById("questionModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
