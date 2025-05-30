@@ -2,129 +2,89 @@
   "Hack the Passwords!": [
     {
       "value": 10,
-      "question": "What is the most common password on leaked lists?",
-      "choices": ["password", "123456", "letmein", "abc123"],
-      "answer": "123456"
+      "question": "What is the most common password on leaked lists?"
     },
     {
       "value": 20,
-      "question": "Which technique adds randomness to hashed passwords?",
-      "choices": ["Peppering", "Stretching", "Salting", "Rinsing"],
-      "answer": "Salting"
+      "question": "Which technique adds randomness to hashed passwords?"
     },
     {
       "value": 40,
-      "question": "Which hashing algorithm is now considered insecure?",
-      "choices": ["SHA-512", "bcrypt", "MD5", "PBKDF2"],
-      "answer": "MD5"
+      "question": "Which hashing algorithm is now considered insecure?"
     },
     {
       "value": 60,
-      "question": "What attack uses a precomputed table of hashes?",
-      "choices": ["Rainbow table attack", "Brute force", "Phishing", "Keylogging"],
-      "answer": "Rainbow table attack"
+      "question": "What attack uses a precomputed table of hashes?"
     },
     {
       "value": 100,
-      "question": "What is the key difference between hashing and encryption?",
-      "choices": ["Hashing can be reversed", "Encryption is irreversible", "Hashing is one-way", "Encryption is one-way"],
-      "answer": "Hashing is one-way"
+      "question": "What is the key difference between hashing and encryption?"
     }
   ],
   "Gone Phishin'": [
     {
       "value": 10,
-      "question": "What is phishing?",
-      "choices": ["A malware type", "A scam to steal information", "A VPN protocol", "A network scanner"],
-      "answer": "A scam to steal information"
+      "question": "What is phishing?"
     },
     {
       "value": 20,
-      "question": "Which method is NOT a phishing delivery method?",
-      "choices": ["Email", "SMS", "Phone call", "Firewall"],
-      "answer": "Firewall"
+      "question": "Which method is NOT a phishing delivery method?"
     },
     {
       "value": 40,
-      "question": "What is 'spear phishing'?",
-      "choices": ["Phishing in groups", "Phishing through games", "Targeted phishing attacks", "Phishing using bait"],
-      "answer": "Targeted phishing attacks"
+      "question": "What is 'spear phishing'?"
     },
     {
       "value": 60,
-      "question": "What is a sign of a phishing email?",
-      "choices": ["Grammar mistakes", "Urgency", "Suspicious links", "All of the above"],
-      "answer": "All of the above"
+      "question": "What is a sign of a phishing email?"
     },
     {
       "value": 100,
-      "question": "What is 'whaling' in the context of phishing?",
-      "choices": ["Catching many victims", "Targeting large companies", "Phishing top executives", "Encrypting whale files"],
-      "answer": "Phishing top executives"
+      "question": "What is 'whaling' in the context of phishing?"
     }
   ],
   "Crypto Chaos": [
     {
       "value": 10,
-      "question": "Which encryption algorithm uses public and private keys?",
-      "choices": ["RSA", "AES", "SHA256", "MD5"],
-      "answer": "RSA"
+      "question": "Which encryption algorithm uses public and private keys?"
     },
     {
       "value": 20,
-      "question": "Which encryption type uses the same key to encrypt and decrypt?",
-      "choices": ["Asymmetric", "Symmetric", "One-time pad", "Keyless"],
-      "answer": "Symmetric"
+      "question": "Which encryption type uses the same key to encrypt and decrypt?"
     },
     {
       "value": 40,
-      "question": "What is the purpose of encryption?",
-      "choices": ["Make files larger", "Confuse hackers", "Protect data confidentiality", "Prevent file deletion"],
-      "answer": "Protect data confidentiality"
+      "question": "What is the purpose of encryption?"
     },
     {
       "value": 60,
-      "question": "Which key size is most secure?",
-      "choices": ["64-bit", "128-bit", "256-bit", "512-bit"],
-      "answer": "512-bit"
+      "question": "Which key size is most secure?"
     },
     {
       "value": 100,
-      "question": "What does RSA stand for?",
-      "choices": ["Rivest–Shamir–Adleman", "Random Secure Algorithm", "Reliable System Architecture", "Reversible Safe Algorithm"],
-      "answer": "Rivest–Shamir–Adleman"
+      "question": "What does RSA stand for?"
     }
   ],
   "Net Ninjas": [
     {
       "value": 10,
-      "question": "What tool captures packets on a network?",
-      "choices": ["Wireshark", "Notepad", "Defender", "Outlook"],
-      "answer": "Wireshark"
+      "question": "What tool captures packets on a network?"
     },
     {
       "value": 20,
-      "question": "Which protocol is used to transfer web pages?",
-      "choices": ["HTTP", "FTP", "DNS", "SMTP"],
-      "answer": "HTTP"
+      "question": "Which protocol is used to transfer web pages?"
     },
     {
       "value": 40,
-      "question": "Which port is used for DNS?",
-      "choices": ["53", "443", "80", "25"],
-      "answer": "53"
+      "question": "Which port is used for DNS?"
     },
     {
       "value": 60,
-      "question": "What does UDP stand for?",
-      "choices": ["Universal Data Protocol", "User Datagram Protocol", "Unencrypted Data Packet", "Unified Delivery Path"],
-      "answer": "User Datagram Protocol"
+      "question": "What does UDP stand for?"
     },
     {
       "value": 100,
-      "question": "Which tool allows you to analyze broadcast messages?",
-      "choices": ["Traceroute", "Wireshark", "Ping", "SSH"],
-      "answer": "Wireshark"
+      "question": "Which tool allows you to analyze broadcast messages?"
     }
   ]
 }
