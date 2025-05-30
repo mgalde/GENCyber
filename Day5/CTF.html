@@ -40,28 +40,55 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.95);
       color: white;
-      padding-top: 100px;
+      padding-top: 80px;
+      z-index: 1000;
     }
     #questionBox {
       margin: auto;
-      padding: 20px;
+      padding: 30px;
       background-color: #222;
       border: 2px solid #00ffff;
       width: 60%;
+      font-size: 1.6em;
+    }
+    .answer-btn {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #003333;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      cursor: pointer;
+    }
+    .answer-btn:hover {
+      background-color: #005555;
+    }
+    #scoreboard {
+      margin: 20px;
+      font-size: 1.2em;
+    }
+    #timer {
+      margin: 10px;
+      font-size: 1.5em;
+      color: #ffff00;
     }
   </style>
 </head>
 <body>
   <h1>🕵️ GenCyber Jeopardy 🧠</h1>
+  <div id="scoreboard">
+    Team 1: <span id="score1">0</span> | Team 2: <span id="score2">0</span>
+  </div>
   <table id="jeopardyBoard"></table>
 
   <div id="questionModal">
     <div id="questionBox">
+      <div id="timer">Time Left: <span id="timeLeft">120</span> seconds</div>
       <h2 id="questionText"></h2>
       <div id="answers"></div>
-      <button onclick="closeQuestion()">Cancel</button>
+      <button class="answer-btn" onclick="closeQuestion()">No Answer</button>
     </div>
   </div>
 
@@ -75,6 +102,7 @@
     const values = [10, 20, 40, 60, 100];
     let questions = {};
     let teamScores = { Team1: 0, Team2: 0 };
+    let countdown;
 
     fetch('questions.json')
       .then(res => res.json())
@@ -104,32 +132,58 @@
       if (!question) return;
 
       document.getElementById("questionText").innerText = question.question;
-
       const answersDiv = document.getElementById("answers");
       answersDiv.innerHTML = "";
-      question.choices.forEach((choice, idx) => {
-        const btn = document.createElement("button");
-        btn.innerText = choice;
-        btn.onclick = () => {
-          if (choice === question.answer) {
-            const team = prompt("Correct! Enter team (Team1 or Team2):");
-            teamScores[team] += question.value;
-            alert(team + " score: " + teamScores[team]);
-          } else {
-            alert("Wrong answer!");
-          }
-          cell.classList.add('hidden');
-          closeQuestion();
-        };
-        answersDiv.appendChild(btn);
+
+      question.choices.forEach((choice) => {
+        const btn1 = document.createElement("button");
+        btn1.className = "answer-btn";
+        btn1.innerText = `Team 1: ${choice}`;
+        btn1.onclick = () => handleAnswer("Team1", choice, question.answer, question.value, cell);
+
+        const btn2 = document.createElement("button");
+        btn2.className = "answer-btn";
+        btn2.innerText = `Team 2: ${choice}`;
+        btn2.onclick = () => handleAnswer("Team2", choice, question.answer, question.value, cell);
+
+        answersDiv.appendChild(btn1);
+        answersDiv.appendChild(btn2);
         answersDiv.appendChild(document.createElement("br"));
       });
 
+      startTimer();
       document.getElementById("questionModal").style.display = "block";
+    }
+
+    function handleAnswer(team, selected, correct, value, cell) {
+      if (selected === correct) {
+        teamScores[team] += value;
+      }
+      updateScores();
+      cell.classList.add('hidden');
+      closeQuestion();
     }
 
     function closeQuestion() {
       document.getElementById("questionModal").style.display = "none";
+      clearInterval(countdown);
+      document.getElementById("timeLeft").innerText = "120";
+    }
+
+    function updateScores() {
+      document.getElementById("score1").innerText = teamScores.Team1;
+      document.getElementById("score2").innerText = teamScores.Team2;
+    }
+
+    function startTimer() {
+      let time = 120;
+      countdown = setInterval(() => {
+        time--;
+        document.getElementById("timeLeft").innerText = time;
+        if (time <= 0) {
+          clearInterval(countdown);
+        }
+      }, 1000);
     }
   </script>
 </body>
