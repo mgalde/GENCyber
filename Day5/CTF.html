@@ -74,6 +74,12 @@
       font-size: 1.5em;
       color: #ffff00;
     }
+    #finalJeopardy {
+      margin-top: 30px;
+    }
+    #logDownload {
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -95,6 +101,14 @@
     </div>
   </div>
 
+  <div id="finalJeopardy">
+    <button class="answer-btn" onclick="triggerFinalJeopardy()">🎯 Final Jeopardy</button>
+  </div>
+
+  <div id="logDownload">
+    <button class="answer-btn" onclick="downloadScoreLog()">📄 Download Score Log</button>
+  </div>
+
   <script>
     const categories = [
       "Hack the Passwords!", 
@@ -105,9 +119,11 @@
     const values = [10, 20, 40, 60, 100];
     let questions = {};
     let teamScores = { Team1: 0, Team2: 0 };
+    let scoreLog = [];
     let countdown;
     let currentCell = null;
     let currentValue = 0;
+    let currentQuestion = "";
 
     fetch('questions.json')
       .then(res => res.json())
@@ -139,6 +155,7 @@
       document.getElementById("questionText").innerText = question.question;
       currentCell = cell;
       currentValue = value;
+      currentQuestion = question.question;
 
       startTimer();
       document.getElementById("questionModal").style.display = "block";
@@ -146,16 +163,20 @@
 
     function handleAnswer(team) {
       teamScores[team] += currentValue;
+      scoreLog.push(`${team} answered: ${currentQuestion} [+${currentValue}]`);
       updateScores();
       currentCell.classList.add('hidden');
       closeQuestion();
     }
 
     function closeQuestion() {
-      document.getElementById("questionModal").style.display = "none";
-      clearInterval(countdown);
-      document.getElementById("timeLeft").innerText = "120";
-    }
+  document.getElementById("questionModal").style.display = "none";
+  clearInterval(countdown);
+  document.getElementById("timeLeft").innerText = "120";
+  if (currentCell) {
+    currentCell.classList.add('hidden');
+  }
+}
 
     function updateScores() {
       document.getElementById("score1").innerText = teamScores.Team1;
@@ -171,6 +192,29 @@
           clearInterval(countdown);
         }
       }, 1000);
+    }
+
+    function triggerFinalJeopardy() {
+      const finalQuestion = prompt("Enter your Final Jeopardy question:");
+      if (!finalQuestion) return;
+      currentValue = parseInt(prompt("Enter point value for Final Jeopardy:")) || 0;
+      currentQuestion = finalQuestion;
+
+      document.getElementById("questionText").innerText = finalQuestion;
+      document.getElementById("questionModal").style.display = "block";
+      startTimer();
+    }
+
+    function downloadScoreLog() {
+      const log = scoreLog.join("\n") + `\n\nFinal Score:\nTeam 1: ${teamScores.Team1}\nTeam 2: ${teamScores.Team2}`;
+      const blob = new Blob([log], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "jeopardy_score_log.txt";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   </script>
 </body>
