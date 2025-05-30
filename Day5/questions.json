@@ -1,0 +1,40 @@
+{
+  "Hack the Passwords!": [
+    {
+      "value": 10,
+      "question": "What is the most common password?",
+      "choices": ["123456", "password", "qwerty", "admin"],
+      "answer": "123456"
+    },
+    {
+      "value": 20,
+      "question": "What technique adds randomness to passwords?",
+      "choices": ["Hashing", "Salting", "Phishing", "Encoding"],
+      "answer": "Salting"
+    }
+  ],
+  "Gone Phishin'": [
+    {
+      "value": 10,
+      "question": "What is phishing?",
+      "choices": ["A type of malware", "A data center", "A scam to steal info", "An encrypted message"],
+      "answer": "A scam to steal info"
+    }
+  ],
+  "Crypto Chaos": [
+    {
+      "value": 10,
+      "question": "What type of key does RSA use?",
+      "choices": ["Shared Key", "Public/Private Key", "PIN Code", "OTP"],
+      "answer": "Public/Private Key"
+    }
+  ],
+  "Net Ninjas": [
+    {
+      "value": 10,
+      "question": "What tool captures network traffic?",
+      "choices": ["Firewall", "Sniffer", "Wireshark", "Antivirus"],
+      "answer": "Wireshark"
+    }
+  ]
+}
