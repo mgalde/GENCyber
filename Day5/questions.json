@@ -24,23 +24,23 @@
   "Gone Phishin": [
     {
       "value": 10,
-      "question": "What is phishing?"
+      "question": "All Phishing sites have something wrong with them?"
     },
     {
       "value": 20,
-      "question": "Which method is NOT a phishing delivery method?"
+      "question": "A website on the DarkWeb usually ends in this?"
     },
     {
       "value": 40,
-      "question": "What is 'spear phishing'?"
+      "question": "Being tricked by a phishing site is because YOU did something wrong?"
     },
     {
       "value": 60,
-      "question": "What is a sign of a phishing email?"
+      "question": "A hacker needs to be very good at web programming to create a phishing page?"
     },
     {
       "value": 100,
-      "question": "What is 'whaling' in the context of phishing?"
+      "question": "A hacker is after these 3 things when phishing?"
     }
   ],
   "Crypto Chaos": [
