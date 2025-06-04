@@ -2,23 +2,23 @@
   "Hack the Passwords!": [
     {
       "value": 10,
-      "question": "What is the most common password on leaked lists?"
+      "question": "My Password WhatismyPassword turns into this hash?"
     },
     {
       "value": 20,
-      "question": "Which technique adds randomness to hashed passwords?"
+      "question": "My Password qwertyuiop turns into this hash??"
     },
     {
       "value": 40,
-      "question": "Which hashing algorithm is now considered insecure?"
+      "question": "My hash is 8621ffdbc5698829397d97767ac13db3 and that means my password is this?"
     },
     {
       "value": 60,
-      "question": "What attack uses a precomputed table of hashes?"
+      "question": "My hash is 5fcfd41e547a12215b173ff47fdd3739 and means my password is this?"
     },
     {
       "value": 100,
-      "question": "What is the key difference between hashing and encryption?"
+      "question": "My username is UPdown25 and my hash is be945b99276ccfab59b5e6e687dd30ea so my password is this?"
     }
   ],
   "Gone Phishin": [
