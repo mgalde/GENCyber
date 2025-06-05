@@ -54,15 +54,15 @@
     },
     {
       "value": 40,
-      "question": "What is the purpose of encryption?"
+      "question": "A good password is this"
     },
     {
       "value": 60,
-      "question": "Which key size is most secure?"
+      "question": "A good way to tell a message is encrypted is this character"
     },
     {
       "value": 100,
-      "question": "What does RSA stand for?"
+      "question": "What is the = used for"
     }
   ],
   "Net Ninjas": [
@@ -72,19 +72,19 @@
     },
     {
       "value": 20,
-      "question": "Which protocol is used to transfer web pages?"
+      "question": "Network traffic is secure?"
     },
     {
       "value": 40,
-      "question": "Which port is used for DNS?"
+      "question": "What network address goes everywhere?"
     },
     {
       "value": 60,
-      "question": "What does UDP stand for?"
+      "question": "Sandbot.icu is a web address, what does your computer undertand?"
     },
     {
       "value": 100,
-      "question": "Which tool allows you to analyze broadcast messages?"
+      "question": "To hide web traffic on the network, I want to do this?"
     }
   ]
 }
