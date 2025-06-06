@@ -2,89 +2,89 @@
   "Hack the Passwords!": [
     {
       "value": 10,
-      "question": "My Password WhatismyPassword turns into this hash?"
+      "question": "My Password WhatismyPassword turns into this hash"
     },
     {
       "value": 20,
-      "question": "My Password qwertyuiop turns into this hash??"
+      "question": "My Password qwertyuiop turns into this hash"
     },
     {
       "value": 40,
-      "question": "My hash is 8621ffdbc5698829397d97767ac13db3 and that means my password is this?"
+      "question": "My hash is 8621ffdbc5698829397d97767ac13db3 and that means my password is this"
     },
     {
       "value": 60,
-      "question": "My hash is 5fcfd41e547a12215b173ff47fdd3739 and means my password is this?"
+      "question": "My hash is 5fcfd41e547a12215b173ff47fdd3739 and means my password is this"
     },
     {
       "value": 100,
-      "question": "My username is UPdown25 and my hash is be945b99276ccfab59b5e6e687dd30ea so my password is this?"
+      "question": "My username is UPdown25 and my hash is be945b99276ccfab59b5e6e687dd30ea so my password is this"
     }
   ],
   "Gone Phishin": [
     {
       "value": 10,
-      "question": "All Phishing sites have something wrong with them?"
+      "question": "A phishing site might be easy to catch by finding these things"
     },
     {
       "value": 20,
-      "question": "A website on the DarkWeb usually ends in this?"
+      "question": "A website on the DarkWeb usually ends with this"
     },
     {
       "value": 40,
-      "question": "Being tricked by a phishing site is because YOU did something wrong?"
+      "question": "Being tricked by a phishing page does not mean this"
     },
     {
       "value": 60,
-      "question": "A hacker needs to be very good at web programming to create a phishing page?"
+      "question": "A build a phishing page, this hacker needs to be good at this"
     },
     {
       "value": 100,
-      "question": "A hacker is after these 3 things when phishing?"
+      "question": "A hacker is after these 3 things when phishing"
     }
   ],
   "Crypto Chaos": [
     {
       "value": 10,
-      "question": "Which encryption algorithm uses public and private keys?"
+      "question": "This encryption algorithm uses public and private keys"
     },
     {
       "value": 20,
-      "question": "Which encryption type uses the same key to encrypt and decrypt?"
+      "question": "This encryption type uses the same key to encrypt and decrypt"
     },
     {
       "value": 40,
-      "question": "A good password is this"
+      "question": "A good password follows these four rules"
     },
     {
       "value": 60,
-      "question": "A good way to tell a message is encrypted is this character"
+      "question": "Any encryption can be broken given enough of this and that"
     },
     {
       "value": 100,
-      "question": "What is the = used for"
+      "question": "Encrypted text is not always seen, but when I see it, it looks like this"
     }
   ],
   "Net Ninjas": [
     {
       "value": 10,
-      "question": "What tool captures packets on a network?"
+      "question": "This tool captures packets on a network"
     },
     {
       "value": 20,
-      "question": "Network traffic is secure?"
+      "question": "Network traffic is secure when you do this"
     },
     {
       "value": 40,
-      "question": "What network address goes everywhere?"
+      "question": "This network address goes everywhere"
     },
     {
       "value": 60,
-      "question": "Sandbot.icu is a web address you understand, But, your computer understands this?"
+      "question": "Sandbot.icu is a web address you understand, But, your computer understands this"
     },
     {
       "value": 100,
-      "question": "To hide web traffic on the network, I want to do this?"
+      "question": "To hide web traffic on the network, I want to do this"
     }
   ]
 }
